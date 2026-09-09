@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import GameFrame, { Reveal } from "../components/GameFrame.jsx";
+import JP, { Romaji } from "../components/JP.jsx";
 import { useDeck, pick } from "../lib/deck.js";
 import { conjugate, FORMS } from "../lib/conjugate.js";
 
@@ -12,10 +13,10 @@ export default function ConjugationLadder({ data }) {
   return (
     <GameFrame title="Conjugation Ladder" jp="活用" hint="Say the verb in the requested form." revealed={r} onReveal={() => setR(true)} onNext={() => { next(); setN(k => k + 1); setR(false); }}>
       <div className="stack">
-        <div className="hero-jp hero-md">{v[0]}</div>
-        <div className="answer-sub">{v[1]}　·　{v[2]}</div>
+        <JP as="div" className="hero-jp hero-md" text={v[0]} romaji={false} />
+        <div className="answer-sub">{v[1]}　·　{v[2]} <Romaji text={v[1]} className="romaji-inline" /></div>
         <div className="form-ask">{FORMS[form]}</div>
-        <Reveal show={r} className="center"><div className="answer-jp">{answer}</div></Reveal>
+        <Reveal show={r} className="center"><JP as="div" className="answer-jp" text={answer} /></Reveal>
       </div>
     </GameFrame>
   );

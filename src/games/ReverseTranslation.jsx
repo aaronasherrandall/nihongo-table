@@ -1,5 +1,6 @@
 import { useState } from "react";
 import GameFrame, { Reveal } from "../components/GameFrame.jsx";
+import JP from "../components/JP.jsx";
 import { useDeck } from "../lib/deck.js";
 
 export default function ReverseTranslation({ data }) {
@@ -10,8 +11,8 @@ export default function ReverseTranslation({ data }) {
       <div className="stack">
         <div className="sentence-en">{s[0]}</div>
         <Reveal show={r} className="center">
-          <div className="answer-jp">{s[1]}</div>
-          <div className="answer-jp dim">{s[2]}</div>
+          <JP as="div" className="answer-jp" text={s[1]} />
+          <JP as="div" className="answer-jp dim" text={s[2]} />
         </Reveal>
       </div>
     </GameFrame>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import GameFrame, { Reveal } from "../components/GameFrame.jsx";
+import JP from "../components/JP.jsx";
 import { useDeck } from "../lib/deck.js";
 
 const KANA = "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん";
@@ -19,8 +20,8 @@ function SlotCard({ word, reading, meaning, tone, label, spinKey }) {
   return (
     <div className={"slot slot-" + tone}>
       <div className="slot-label">{label}</div>
-      <div className={"slot-word " + (done ? "slot-done" : "")}>{shown}</div>
-      <div className="slot-sub" style={{ opacity: done ? 1 : 0 }}>{reading}</div>
+      <div className={"slot-word " + (done ? "slot-done" : "")}>{done ? <JP text={word} romaji={false} /> : shown}</div>
+      <div className="slot-sub" style={{ opacity: done ? 1 : 0 }}><JP text={reading} /></div>
       <div className="slot-en" style={{ opacity: done ? 1 : 0 }}>{meaning}</div>
     </div>
   );
@@ -43,7 +44,7 @@ export default function SentenceBuilder({ data }) {
       <Reveal show={revealed}>
         <div className="bonus">
           <div className="bonus-label">bonus challenge</div>
-          <div className="bonus-jp">{bonus[0]}</div>
+          <JP as="div" className="bonus-jp" text={bonus[0]} />
           <div className="bonus-en">{bonus[1]}</div>
         </div>
       </Reveal>

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import GameFrame, { Reveal } from "../components/GameFrame.jsx";
+import GameFrame from "../components/GameFrame.jsx";
+import JP from "../components/JP.jsx";
 import { useDeck, shuffle } from "../lib/deck.js";
 
 export default function FakeWord({ data }) {
@@ -14,7 +15,7 @@ export default function FakeWord({ data }) {
       <div className="grid4">
         {cards.map((c, i) => (
           <div key={i} className={"tile tile-tall " + (r && c.fake ? "tile-odd" : r ? "tile-real" : "")}>
-            <div>{c.w}</div>
+            <JP as="div" text={c.w} />
             {r && <div className="tile-sub">{c.rd && <span>{c.rd}　</span>}{c.m}</div>}
           </div>
         ))}

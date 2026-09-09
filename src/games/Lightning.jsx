@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import GameFrame from "../components/GameFrame.jsx";
+import { Romaji } from "../components/JP.jsx";
 import { shuffle } from "../lib/deck.js";
 
 const ROUNDS = 10;
@@ -53,7 +54,7 @@ export default function Lightning({ data }) {
           <div className="progress">{i + 1} / {ROUNDS}</div>
           <div className="hero-jp">{cur[0]}</div>
           {phase === "q" ? <div className={"lightning-t " + (t <= 2 ? "timer-low" : "")}>{t}</div>
-            : <div className="answer-jp accent">{cur[1]}　<span className="answer-en">{cur[2]}</span></div>}
+            : <div className="answer-jp accent">{cur[1]}　<span className="answer-en">{cur[2]}</span><Romaji text={cur[1]} /></div>}
         </div>
       )}
       {phase === "done" && (
