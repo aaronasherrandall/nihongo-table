@@ -17,11 +17,12 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 html, body, #root { height: 100%; }
+html { height: -webkit-fill-available; } body { min-height: -webkit-fill-available; }
 body { background: var(--bg); color: var(--ink); font-family: var(--sans); overflow: hidden; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-.app { height: 100vh; height: 100dvh; display: flex; flex-direction: column; }
+.app { height: 100%; height: -webkit-fill-available; height: 100dvh; display: flex; flex-direction: column; }
 
 /* ── top bar ── */
 .top { display: flex; align-items: center; gap: 20px; padding: 10px 22px; border-bottom: 1px solid var(--line); background: var(--bg-2); flex-shrink: 0; }
@@ -40,7 +41,7 @@ button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .lvl-on { background: var(--gold); color: #1a1408; }
 
 /* ── picker ── */
-.picker { flex: 1; overflow-y: auto; padding: 22px 26px 40px; display: flex; flex-direction: column; gap: 30px; }
+.picker { flex: 1; overflow-y: auto; padding: 22px 26px calc(40px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 30px; }
 .group-title { display: flex; align-items: baseline; gap: 12px; font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); margin-bottom: 12px; font-weight: 700; }
 .group-jp { font-family: var(--serif); font-size: 26px; letter-spacing: 2px; color: var(--ink); text-transform: none; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
@@ -67,7 +68,7 @@ button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .frame-jp { font-family: var(--serif); color: var(--dim); font-size: 14px; }
 .frame-hint { margin-left: auto; color: var(--dim); font-size: 13px; max-width: 52ch; text-align: right; }
 .frame-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; padding: 20px 26px; overflow-y: auto; }
-.frame-foot { display: flex; align-items: center; gap: 12px; padding: 12px 22px 16px; border-top: 1px solid var(--line); background: var(--bg-2); flex-shrink: 0; }
+.frame-foot { display: flex; align-items: center; gap: 12px; padding: 12px 22px calc(16px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--bg-2); flex-shrink: 0; }
 .spacer { flex: 1; }
 
 /* ── buttons ── */
