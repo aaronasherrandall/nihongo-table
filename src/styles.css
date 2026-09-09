@@ -21,7 +21,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); overf
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-.app { height: 100dvh; display: flex; flex-direction: column; }
+.app { height: 100vh; height: 100dvh; display: flex; flex-direction: column; }
 
 /* ── top bar ── */
 .top { display: flex; align-items: center; gap: 20px; padding: 10px 22px; border-bottom: 1px solid var(--line); background: var(--bg-2); flex-shrink: 0; }
@@ -45,13 +45,13 @@ button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .group-jp { font-family: var(--serif); font-size: 26px; letter-spacing: 2px; color: var(--ink); text-transform: none; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
 .pick { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 170px; padding: 20px 20px 18px; border-radius: 18px;
-  background: linear-gradient(145deg, var(--c) 0%, color-mix(in srgb, var(--c) 72%, #14182b) 100%);
-  color: #14182b; border: 2px solid color-mix(in srgb, var(--c) 60%, white);
-  box-shadow: 0 8px 24px color-mix(in srgb, var(--c) 35%, transparent), inset 0 1px 0 rgba(255,255,255,.35);
+  background: linear-gradient(145deg, rgba(255,255,255,.10) 0%, rgba(20,24,43,.30) 100%), var(--c);
+  color: #14182b; border: 2px solid rgba(255,255,255,.45);
+  box-shadow: 0 8px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.35);
   transition: transform .15s cubic-bezier(.2,.8,.3,1.3), box-shadow .15s, filter .15s;
   animation: pop-in .5s cubic-bezier(.2,.8,.3,1.2) both; animation-delay: calc(var(--i, 0) * 60ms); }
 .pick::after { content: ""; position: absolute; inset: auto -30px -40px auto; width: 150px; height: 150px; border-radius: 50%; background: rgba(255,255,255,.18); pointer-events: none; }
-.pick:hover { transform: translateY(-4px) rotate(-1deg) scale(1.02); box-shadow: 0 16px 34px color-mix(in srgb, var(--c) 55%, transparent); filter: saturate(1.15); }
+.pick:hover { transform: translateY(-4px) rotate(-1deg) scale(1.02); box-shadow: 0 16px 34px rgba(0,0,0,.45); filter: saturate(1.15); }
 .pick:active { transform: scale(.97); }
 .pick-emoji { position: absolute; top: 14px; right: 16px; font-size: 34px; line-height: 1; filter: drop-shadow(0 2px 3px rgba(0,0,0,.25)); }
 .pick-jp { padding-right: 48px; font-family: var(--serif); font-size: 36px; font-weight: 700; line-height: 1; text-shadow: 0 1px 0 rgba(255,255,255,.35); }
@@ -120,7 +120,7 @@ rt { font-family: var(--sans); font-weight: 500; font-size: .32em; line-height: 
 .row .jp-text { display: inline; }
 .romaji-inline { display: inline; font-size: 1em; margin-left: .5em; }
 .topic .romaji, .topic rt { display: none; }
-.accent .romaji { color: color-mix(in srgb, var(--gold) 70%, var(--dim)); }
+.accent .romaji { color: #c9a95c; }
 
 /* ── reveal ── */
 .reveal { opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .25s; pointer-events: none; }
