@@ -26,7 +26,7 @@ export default function GameFrame({ title, jp, hint, revealed, onReveal, onNext,
       <div className="frame-body">{children}</div>
       {!hideControls && (
         <div className="frame-foot">
-          {timer && <Timer />}
+          {timer && <Timer onReveal={onReveal}/>}
           <div className="spacer" />
           {onReveal && !revealed && <button className="btn btn-gold" onClick={onReveal}>Reveal</button>}
           <button className={"btn " + (revealed || !onReveal ? "btn-primary" : "btn-ghost")} onClick={onNext}>{nextLabel}</button>
@@ -36,7 +36,7 @@ export default function GameFrame({ title, jp, hint, revealed, onReveal, onNext,
   );
 }
 
-export function Timer({ presets = [10, 30, 60] }) {
+export function Timer({ presets = [10, 30, 60], onReveal }) {
   const [left, setLeft] = useState(null);
   const ref = useRef(null);
   const stop = () => { clearInterval(ref.current); ref.current = null; setLeft(null); };
@@ -45,7 +45,7 @@ export function Timer({ presets = [10, 30, 60] }) {
     setLeft(s);
     ref.current = setInterval(() => {
       setLeft(v => {
-        if (v <= 1) { clearInterval(ref.current); ref.current = null; return 0; }
+        if (v <= 1) { clearInterval(ref.current); ref.current = null; onReveal();  return 0; }
         return v - 1;
       });
     }, 1000);
